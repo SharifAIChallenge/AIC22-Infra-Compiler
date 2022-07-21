@@ -1,0 +1,24 @@
+version: '3.6'
+services:
+  compiler:
+    image: reg.aichallenge.ir/aic/base/infra/compiler:0.0.1
+    networks:
+      - network
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.labels.infra-worker == true
+          - node.labels.infra-gate == true
+    environment:
+      KAFKA_ENDPOINT: "kn1.aichallenge.ir:9092,kn2.aichallenge.ir:9092,kn3.aichallenge.ir:9092"
+      MINIO_ENDPOINT: "minio.aichallenge.ir:9001"
+      KAFKA_TOPIC_STORE_CODE: "store-code"
+      KAFKA_TOPIC_EVENTS: "events"
+      KAFKA_CONSUMER_GP: "compiler-consumer"
+      MINIO_ACCESS_KEY: "ngnFxoPBtPZjBS7m4x12Yb1q5FovKGa4Bl9PsENs13nmDTRp"
+      MINIO_SECRET_KEY: "RuRRYyZKbOwVnkyNRYq1f7CRPq89XqOwFHkxoTY4Epq0fvHh"
+      MINIO_BUCKET_CODE: "code"
+      command: "python3 -u main.py"
+networks:
+  network:

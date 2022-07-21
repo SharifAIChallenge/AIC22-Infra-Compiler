@@ -1,0 +1,8 @@
+torch==1.8.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
+tensorflow-cpu
+pyinstaller
+pandas
+scipy
+scikit-learn
+numpy
+

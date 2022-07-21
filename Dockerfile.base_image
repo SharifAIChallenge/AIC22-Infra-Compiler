@@ -1,0 +1,9 @@
+# dockerfile used to build the base image used in ./Dockerfile
+FROM reg.aichallenge.ir/python:3.8
+
+RUN apt update && apt install -y vim curl gettext
+RUN apt-get update && \
+apt install -y vim curl gettext cmake unzip
+
+COPY ./base_lib_req.txt ./
+RUN pip install -r base_lib_req.txt -f https://download.pytorch.org/whl/torch_stable.html
