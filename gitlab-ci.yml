@@ -1,0 +1,34 @@
+stages:
+  - build
+  - deploy-production
+
+workflow:
+  rules:
+#    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_PROTECTED == "false"'
+#      when: never
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: always
+#    - if: '$CI_COMMIT_BRANCH == "dev"'
+#      when: always
+#    - when: never
+
+variables:
+  IMAGE_URL: reg.aichallenge.ir/aic22-infra-compiler:$CI_PIPELINE_ID-$CI_COMMIT_SHORT_SHA
+
+build:
+  stage: build
+  image: reg.aichallenge.ir/docker:19.03.12
+  tags:
+    - docker
+  script:
+    - docker build . -t $IMAGE_URL
+    - docker push $IMAGE_URL
+
+
+deploy-production:
+  stage: deploy-production
+  image: kroniak/ssh-client:latest
+  before_script:
+    - chmod -R 700 $SSH_PRIVATE_KEY
+  script:
+    - ssh -i $SSH_PRIVATE_KEY -o "StrictHostKeyChecking=no" ubuntu@94.101.187.20 -t "docker service update --image $IMAGE_URL infra_hermes"
