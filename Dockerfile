@@ -24,4 +24,4 @@ RUN chmod +x src/compiler-psudo.sh
 # make logging directory
 RUN mkdir -p /var/log/compiler
 WORKDIR /home/src
-ENTRYPOINT["python", "-u", "main.py"]
+ENTRYPOINT ["python", "-u", "main.py"]
