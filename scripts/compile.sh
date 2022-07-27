@@ -7,6 +7,9 @@ ROOT_DIR=$PWD
 LOG_PATH=$ROOT_DIR/compile.log
 BIN_PATH=$ROOT_DIR/binary
 
+echo "////////////////////////// $LANG"
+ls $ROOT_DIR
+
 function clean_up {
   # clean up
   rm -rf $ROOT_DIR/isolated

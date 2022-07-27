@@ -63,7 +63,7 @@ PYTHON_CLIENT_ENTRY_FILE="Client.py"
 # the binary compiler used here is pyinstaller pakage should
 # be installed in the running enviorment (docker, virtualenv, ...)
 function python-bin {
-    
+    echo "//////////// Welcome to Python ////////////"
     enter_compile_dir $PYTHON_CLIENT_ENTRY_FILE
 
     info "language detected: python"
