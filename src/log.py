@@ -8,9 +8,10 @@ class LoggerFormatter(logging.Formatter):
     level_just=15
     def format(self, record):
         time = self.formatTime(record, self.datefmt)
-        return f'===[{time}]===[{record.name}]'.ljust(self.name_just,"=") + \
-            f'===[{record.levelname}]==='.ljust(self.level_just,"=") + \
-            f' {record.getMessage()} :: ({record.filename}:{record.lineno})'
+        # return f'===[{time}]===[{record.name}]'.ljust(self.name_just,"=") + \
+        #     f'===[{record.levelname}]==='.ljust(self.level_just,"=") + \
+        #     f' {record.getMessage()} :: ({record.filename}:{record.lineno})'
+        return f' {record.getMessage()} :: ({record.filename}:{record.lineno})'
 
 default_format = LoggerFormatter()
 
