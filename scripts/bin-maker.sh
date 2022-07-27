@@ -55,7 +55,7 @@ function enter_compile_dir {
 
 
 
-PYTHON_CLIENT_ENTRY_FILE="Controller.py"
+PYTHON_CLIENT_ENTRY_FILE="Client.py"
 # compiles the python client into binary file
 # the precedure taken here are based on the code
 # structure described in the github repo lined below
