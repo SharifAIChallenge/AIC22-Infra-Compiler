@@ -31,4 +31,4 @@ deploy-production:
   before_script:
     - chmod -R 700 $SSH_PRIVATE_KEY
   script:
-    - ssh -i $SSH_PRIVATE_KEY -o "StrictHostKeyChecking=no" ubuntu@94.101.187.20 -t "docker service update --image $IMAGE_URL infra_hermes"
+    - ssh -i $SSH_PRIVATE_KEY -o "StrictHostKeyChecking=no" ubuntu@94.101.187.20 -t "docker service update --image $IMAGE_URL infra_compiler"
