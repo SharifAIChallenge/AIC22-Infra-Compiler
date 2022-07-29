@@ -59,7 +59,7 @@ RUN rm -rf yaml-cpp \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-CMD export PATH="/root/.local/bin":$PATH && cd /src && rm -rf build && ./build.sh
+RUN export PATH="/root/.local/bin":$PATH 
 
 RUN apt update && apt install -y vim curl gettext
 RUN apt-get update && \

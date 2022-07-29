@@ -83,23 +83,28 @@ CPP_EXEC_FILE_NAME="client"
 # thus both packages should be installed in the running 
 # enviorment (docker, virtualenv, ...)
 function cpp-bin {
+#
+#    enter_compile_dir $CPP_MAKE_FILE
+#
+#    info "language detected: C"
+#    info "start compiling using CMAKE"
+#    mkdir build
+#    cd build
+#        pwd >>$LOG_PATH
+#        cmake .. >>$LOG_PATH 2>&1
+#        make >>$LOG_PATH 2>&1
+#        check $?
+#        pwd >>$LOG_PATH
+#
+#        # use -name <exec-name> if many
+#        executable=`find . -name $CPP_EXEC_FILE_NAME -type f -executable -print`
+#        mv $executable $BIN_PATH
+#    cd ..
+    cd /home/scripts/isolated/AIC22-Client-Cpp
+    rm -rf ./build/
+    ./build.sh
+    cd - 
 
-    enter_compile_dir $CPP_MAKE_FILE
-
-    info "language detected: C"
-    info "start compiling using CMAKE"
-    mkdir build
-    cd build
-        pwd >>$LOG_PATH
-        cmake .. >>$LOG_PATH 2>&1
-        make >>$LOG_PATH 2>&1
-        check $?
-        pwd >>$LOG_PATH
-
-        # use -name <exec-name> if many
-        executable=`find . -name $CPP_EXEC_FILE_NAME -type f -executable -print`
-        mv $executable $BIN_PATH
-    cd ..    
 }
 
 # not yet supported
