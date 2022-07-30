@@ -18,7 +18,7 @@ def download_code(code_id, dest) -> bool:
 
 def __compile(src, language, dest) -> int:
     logger.info("starting the compiling process")
-    language.replace(" ", "")
+    language = language.replace(" ", "")
     cmd = subprocess.Popen(["./compiler-psudo.sh", src, language, dest],
                            stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     # logger.debug(cmd.stdout.read())
