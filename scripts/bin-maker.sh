@@ -49,6 +49,7 @@ function enter_compile_dir {
     fi
 
     cd `dirname $compile_path`
+    cd .. # stay above src/ dir
 }
 
 
