@@ -69,7 +69,8 @@ function python-bin {
 
     info "language detected: python"
     info "start compiling using pyinstaller"
-    pyinstaller --hidden-import cmath --onefile ./isolated/$PYTHON_CLIENT_ENTRY_FILE >> $LOG_PATH 2>&1 
+    echo "------------------------------"./src/$PYTHON_CLIENT_ENTRY_FILE
+    pyinstaller --hidden-import cmath --onefile ./src/$PYTHON_CLIENT_ENTRY_FILE >> $LOG_PATH 2>&1 
     check $?
     mv dist/`basename $PYTHON_CLIENT_ENTRY_FILE .py` $BIN_PATH
 }    
