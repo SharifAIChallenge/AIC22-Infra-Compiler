@@ -1,5 +1,6 @@
 # FROM reg.aichallenge.ir/aic/base/infra/compiler:v4
-FROM reg.aichallenge.ir/python:3.8
+# FROM reg.aichallenge.ir/python:3.8
+FROM reg.aichallenge.ir/aic22-infra-compiler:768-c8accdd3
 
 # Docker image for building AIC22 C++ client
 # source code should be mounted to /src
