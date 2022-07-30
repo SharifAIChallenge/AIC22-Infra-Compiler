@@ -41,7 +41,7 @@ function enter_compile_dir {
     # defaulting to first one if found multiple
     find . -iname $1
     compile_path=`find . -iname $1 | head -n1`
-    info "compile path is :$PWD/$compile_path"
+    info "compile path is :$compile_path"
 
     if [ -z compile_path ];then
         fatal "$1 not found!"
@@ -69,7 +69,7 @@ function python-bin {
 
     info "language detected: python"
     info "start compiling using pyinstaller"
-    pyinstaller --hidden-import cmath --onefile ./src/$PYTHON_CLIENT_ENTRY_FILE >> $LOG_PATH 2>&1 
+    pyinstaller --hidden-import cmath --onefile ./isolated/$PYTHON_CLIENT_ENTRY_FILE >> $LOG_PATH 2>&1 
     check $?
     mv dist/`basename $PYTHON_CLIENT_ENTRY_FILE .py` $BIN_PATH
 }    
