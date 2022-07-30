@@ -77,7 +77,7 @@ esac
 ( cd `dirname $BIN_PATH` && tar -cvzf $BIN_ZIP_PATH `basename $BIN_PATH`)
 
 if [ $? -eq 0 ];then
-    info "bin.zip file is ready to use"
+    info "bin.zip file is ready to use at $BIN_ZIP_PATH"
     clean_up
     exit 0
 else
