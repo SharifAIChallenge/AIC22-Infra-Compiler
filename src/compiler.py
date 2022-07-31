@@ -29,7 +29,11 @@ def __compile(src, language, dest) -> int:
     stream = os.popen(f"bash compiler-psudo.sh {src} {language} {dest}")
     output = stream.readlines()
     logger.info(output)
-    
+    status = stream.close()
+    if status:
+        print("/////////////////////", flush=True)
+        print(os.waitstatus_to_exitcode(status))
+        print("/////////////////////", flush=True)
     return 0
 
 
