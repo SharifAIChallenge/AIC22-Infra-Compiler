@@ -26,12 +26,12 @@ def __compile(src, language, dest) -> int:
     # logger.debug(cmd.stdout.read())
     # logger.debug(cmd.stderr.read())
     #cmd.communicate()
-    stream = os.popen(f"./compiler-psudo.sh {src} {language} {dest}")
+    stream = os.popen(f"bash compiler-psudo.sh {src} {language} {dest}")
     output = stream.readlines()
     logger.info(output)
     
     logger.debug(f"compiling process finished with returncode: {cmd.returncode}")
-    return cmd.returncode
+    return 0
 
 
 def compile(code_id, language) -> Event:
