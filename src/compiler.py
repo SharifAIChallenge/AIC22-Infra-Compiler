@@ -26,7 +26,7 @@ def __compile(src, language, dest) -> int:
     # logger.debug(cmd.stdout.read())
     # logger.debug(cmd.stderr.read())
     #cmd.communicate()
-    stream = os.system(f"./compiler-psudeo.sh {src} {language} {dest}")
+    stream = os.popen(f"./compiler-psudo.sh {src} {language} {dest}")
     output = stream.readlines()
     logger.info(output)
     
