@@ -102,11 +102,12 @@ function cpp-bin {
 #        executable=`find . -name $CPP_EXEC_FILE_NAME -type f -executable -print`
 #        mv $executable $BIN_PATH
 #    cd ..
-    cd /home/scripts/isolated/AIC22-Client-Cpp
-    rm -rf ./build/
-    ./build.sh
-    cd - 
-
+     cd /home/scripts/isolated/AIC22-Client-Cpp
+     rm -rf ./build/
+     source ~/.bashrc
+     ./build.sh >> /home/scripts/cpp-build.log
+     mv build $BIN_PATH
+     cd -
 }
 
 # not yet supported
