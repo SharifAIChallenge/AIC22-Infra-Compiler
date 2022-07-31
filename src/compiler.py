@@ -30,9 +30,7 @@ def __compile(src, language, dest) -> int:
     output = stream.readlines()
     logger.info(output)
     status = stream.close()
-    if status and os.waitstatus_to_exitcode(status) != 0:
-        return os.waitstatus_to_exitcode(status)
-    return 0
+    return status if status else 0
 
 
 def compile(code_id, language) -> Event:
@@ -47,6 +45,7 @@ def compile(code_id, language) -> Event:
 
     if __compile(source_file, language, 'bin.tgz') != 0:
         with open('../scripts/compile.log', 'r') as logfile:
+            logger.error('Compile failed!')
             return Event(token=code_id, status_code=Event_Status.COMPILE_FAILED.value,
                          title='failed to compile code!', message_body=logfile.read())
     logger.info(f'3.compile code with code_id: {code_id}, language: {language}')
