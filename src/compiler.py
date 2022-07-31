@@ -30,7 +30,6 @@ def __compile(src, language, dest) -> int:
     output = stream.readlines()
     logger.info(output)
     
-    logger.debug(f"compiling process finished with returncode: {cmd.returncode}")
     return 0
 
 
