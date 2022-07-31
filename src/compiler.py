@@ -2,6 +2,7 @@ from minio_cli import MinioClient, BucketName
 import subprocess
 from event import Event, Event_Status
 import logging
+import os
 
 logger=logging.getLogger("compiler")
 
@@ -20,11 +21,14 @@ def __compile(src, language, dest) -> int:
     logger.info("starting the compiling process")
     language = language.replace(" ", "")
     language = language.replace("java", "jar")
-    cmd = subprocess.Popen(["./compiler-psudo.sh", src, language, dest],
-                           stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    #cmd = subprocess.Popen(["./compiler-psudo.sh", src, language, dest],
+    #                       stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     # logger.debug(cmd.stdout.read())
     # logger.debug(cmd.stderr.read())
-    cmd.communicate()
+    #cmd.communicate()
+    stream = os.system(f"./compiler-psudeo.sh {src} {language} {dest}")
+    output = stream.readlines()
+    logger.info(output)
     
     logger.debug(f"compiling process finished with returncode: {cmd.returncode}")
     return cmd.returncode
