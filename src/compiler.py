@@ -30,10 +30,8 @@ def __compile(src, language, dest) -> int:
     output = stream.readlines()
     logger.info(output)
     status = stream.close()
-    if status:
-        print("/////////////////////", flush=True)
-        print(os.waitstatus_to_exitcode(status))
-        print("/////////////////////", flush=True)
+    if status and os.waitstatus_to_exitcode(status) != 0:
+        return os.waitstatus_to_exitcode(status)
     return 0
 
 
