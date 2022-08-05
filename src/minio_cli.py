@@ -45,7 +45,7 @@ class MinioClient:
     @staticmethod
     def get_file(file_id, bucket_name):
         try:
-            response = client.get_object(bucket_name, f'{file_id}')
+            response = client.get_object(bucket_name, f'{file_id}.zip')
             return response.data
         except:
             logger.exception("exception accured while fetching file")
