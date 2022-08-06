@@ -49,7 +49,6 @@ function enter_compile_dir {
     fi
 
     cd `dirname $compile_path`
-    cd .. # stay above src/ dir
 }
 
 
@@ -66,6 +65,7 @@ PYTHON_CLIENT_ENTRY_FILE="client.py"
 function python-bin {
     echo "//////////// Welcome to Python ////////////"
     enter_compile_dir $PYTHON_CLIENT_ENTRY_FILE
+    cd .. # stay above src/ dir
 
     info "language detected: python"
     info "start compiling using pyinstaller"
@@ -141,7 +141,6 @@ function jar-bin {
 
     info "language detected: jar"
     info "start compiling using jar-stub"
-    pwd >>$LOG_PATH
     
     jarfile=`ls | grep "jar" | head -n1`
     if [ -z $jarfile ];then
