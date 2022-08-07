@@ -108,14 +108,12 @@ function cpp-bin {
 
     script_path=$(dirname "$(readlink -f "$0")")"/"
     cd $script_path
-    
     mkdir build
     cd build
     cmake ..
     make
 
-    # ./build.sh >> /home/scripts/cpp-build.log
-    mv main $BIN_PATH
+    cp main $BIN_PATH
     cd -
 }
 
