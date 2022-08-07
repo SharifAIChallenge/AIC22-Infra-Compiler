@@ -86,7 +86,7 @@ CPP_EXEC_FILE_NAME="client"
 # enviorment (docker, virtualenv, ...)
 function cpp-bin {
 #
-   enter_compile_dir $CPP_MAKE_FILE
+#    enter_compile_dir $CPP_MAKE_FILE
 #
 #    info "language detected: C"
 #    info "start compiling using CMAKE"
@@ -103,6 +103,9 @@ function cpp-bin {
 #        mv $executable $BIN_PATH
 #    cd ..
     #  cd /home/scripts/isolated/AIC22-Client-Cpp
+    enter_compile_dir $CPP_MAKE_FILE
+    cd ..
+    
     rm -rf ./build/
     source ~/.bashrc
 
