@@ -105,13 +105,13 @@ function cpp-bin {
     #  cd /home/scripts/isolated/AIC22-Client-Cpp
     enter_compile_dir $CPP_MAKE_FILE
     cd ..
-    ls | grep CMakeLists.txt -q && "Start Compiling ..." || fatal "CMakeLists.txt not found!"
     
     rm -rf ./build/
     source ~/.bashrc
 
     script_path=$(dirname "$(readlink -f "$0")")"/"
     cd $script_path
+    ls | grep CMakeLists.txt -q && echo "Start Compiling ..." || fatal "CMakeLists.txt not found!"
     mkdir build
     cd build
     cmake ..
