@@ -113,9 +113,9 @@ function cpp-bin {
     cd $script_path
     ls | grep CMakeLists.txt -q && echo "Start Compiling ..." || fatal "CMakeLists.txt not found!"
     mkdir build
-    cd build
-    cmake ..
-    make
+    cd build 
+    cmake .. >>$LOG_PATH 2>&1
+    make >>$LOG_PATH 2>&1
 
     cp main $BIN_PATH
     cd -
